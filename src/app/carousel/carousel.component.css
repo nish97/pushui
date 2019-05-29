@@ -1,0 +1,71 @@
+#container-fluid {
+  background-color: #451771;
+}
+.container-fluid {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  display: inline-block;
+}
+
+#carousel-container{
+   position: relative;
+  
+  background-color: #451771;
+}
+#course-name-id{
+  color: white;
+  margin-top: 22px ;
+  float: left;
+}
+#selected-btn {
+  float: right;
+  margin-top: 20px;
+  background-color: #3cbbb0;
+  margin-bottom:10px;
+}
+#cards-carousel{
+  position:relative;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    img{
+          width:40px;
+          height:40px;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  
+}
+
+@media only screen and (min-width: 365px) {
+
+   #course-name-id{
+  color: white;
+  margin-top: 10px ;
+  float: left;
+}
+#selected-btn {
+  float: center; 
+  background-color: #3cbbb0;
+}
+ img{
+          width:70px;
+          height:90px;
+        
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  
+} 

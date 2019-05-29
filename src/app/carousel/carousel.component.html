@@ -1,0 +1,37 @@
+
+
+<div class="container-fluid" id="container-fluid" >
+  <h3 id="course-name-id">Course Name</h3>
+  <button class="btn btn-lg" id="selected-btn">View Selected</button>
+<div class="container-fluid" id="carousel-container"
+ng2-carouselamos
+[width]="970"
+[items]="bid"
+[$item]="itemTemplate"
+[$prev]="prevTemplate"
+[$next]="nextTemplate"
+(onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index"
+></div>
+
+<ng-template #prevTemplate>
+<img src="assets/images/prev.png" />
+</ng-template>
+
+<ng-template #nextTemplate >
+<img src="assets/images/next.png" />
+</ng-template>
+
+<ng-template let-item let-i="index.id"   #itemTemplate>
+  <div  id ="cards-carousel" *ngFor="let i of bid">
+  <app-card-component [bid]="i"></app-card-component>
+</div>
+</ng-template>
+</div>
+
+<!-- <div class="card" id="card" *ngFor="let i of bid">
+    <label class="container">
+      <input type="checkbox" />
+      <span class="checkmark"></span>
+    </label>
+    <app-card-component [bid]="i"></app-card-component>
+</div> -->
