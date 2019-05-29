@@ -20,62 +20,62 @@ export class StudentListComponent implements OnInit {
   _url: string = 'user/v1/search';
   private lstStudent: IStudent[];
   private sltStudent: IStudent[];
-  public Student = [
-    {
-      "userName": "jaswanth",
-      "emailVerified": "abc@gmail.com",
-      "firstName": "batch1",
-      "id": "B1"
-    },
-    {
-      "userName": "sai",
-      "emailVerified": "def@gmail.com",
-      "firstName": "batch1",
-      "id": "B1"
-    },
-    {
-      "userName": "balu",
-      "emailVerified": "balu@gmail.com",
-      "firstName": "batch1",
-      "id": "B1"
-    },
-    {
-      "userName": "jaswanth",
-      "emailVerified": "stackroute@gmail.com",
-      "firstName": "batch2",
-      "id": "B2"
-    },
-    {
-      "userName": "josh",
-      "emailVerified": "josh@gmail.com",
-      "firstName": "batch3",
-      "id": "B3"
-    },
-    {
-      "userName": "josh",
-      "emailVerified": "josh@gmail.com",
-      "firstName": "batch3",
-      "id": "B3"
-    },
-    {
-      "userName": "josh",
-      "emailVerified": "josh@gmail.com",
-      "firstName": "batch3",
-      "id": "B3"
-    },
-    {
-      "userName": "josh",
-      "emailVerified": "josh@gmail.com",
-      "firstName": "batch3",
-      "id": "B3"
-    },
-    {
-      "userName": "josh",
-      "emailVerified": "josh@gmail.com",
-      "firstName": "batch3",
-      "id": "B3"
-    },
-  ];
+  // public Student = [
+  //   {
+  //     "userName": "jaswanth",
+  //     "emailVerified": "abc@gmail.com",
+  //     "firstName": "batch1",
+  //     "id": "B1"
+  //   },
+  //   {
+  //     "userName": "sai",
+  //     "emailVerified": "def@gmail.com",
+  //     "firstName": "batch1",
+  //     "id": "B1"
+  //   },
+  //   {
+  //     "userName": "balu",
+  //     "emailVerified": "balu@gmail.com",
+  //     "firstName": "batch1",
+  //     "id": "B1"
+  //   },
+  //   {
+  //     "userName": "jaswanth",
+  //     "emailVerified": "stackroute@gmail.com",
+  //     "firstName": "batch2",
+  //     "id": "B2"
+  //   },
+  //   {
+  //     "userName": "josh",
+  //     "emailVerified": "josh@gmail.com",
+  //     "firstName": "batch3",
+  //     "id": "B3"
+  //   },
+  //   {
+  //     "userName": "josh",
+  //     "emailVerified": "josh@gmail.com",
+  //     "firstName": "batch3",
+  //     "id": "B3"
+  //   },
+  //   {
+  //     "userName": "josh",
+  //     "emailVerified": "josh@gmail.com",
+  //     "firstName": "batch3",
+  //     "id": "B3"
+  //   },
+  //   {
+  //     "userName": "josh",
+  //     "emailVerified": "josh@gmail.com",
+  //     "firstName": "batch3",
+  //     "id": "B3"
+  //   },
+  //   {
+  //     "userName": "josh",
+  //     "emailVerified": "josh@gmail.com",
+  //     "firstName": "batch3",
+  //     "id": "B3"
+  //   },
+  // ];
   constructor(private _studentService: StudentService) { }
 
   FieldsChange(student: IStudent, values: any) {
@@ -89,6 +89,6 @@ export class StudentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._studentService.getStudents(this.students, this._url).subscribe(data => { this.lstStudent = data; });
+    this._studentService.getList(this.students, this._url).subscribe(data => { this.lstStudent = data; });
   }
 }

@@ -25,7 +25,7 @@ export class StudentService {
   private _apiUrl: string = 'https://camino.stackroute.com/api/';
 
 
-  getStudents(body: any, _Url: string): Observable<any> {
+  getList(body: any, _Url: string): Observable<any> {
     return this.httpClient.post(this._apiUrl + _Url, body, httpOptions).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
