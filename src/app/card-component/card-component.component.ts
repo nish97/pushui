@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CardComponentComponent implements OnInit {
     @Input() bid:string;
-    
+
   constructor() {
    }
 

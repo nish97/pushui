@@ -22,7 +22,7 @@ export class StudentListComponent implements OnInit {
   private lstStudent: IStudent[];
   constructor(private _studentService: StudentService) { }
 
-  push(data){
+  push(data: { result: { response: { content: IStudent[]; }; }; }){
     this.lstStudent =data.result.response.content;
     console.log("listStudent : ",this.lstStudent);
   }
