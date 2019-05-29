@@ -1,25 +1,24 @@
-
 <div class="container-fluid">
-  <div id="search"class="row">
-  <input class=" col-sm-4 offset-sm-8 form-control form-control-lg  boder border-secondary" type="search" placeholder="Search" aria-label="Search">
+  <div id="search" class="row">
+    <input class=" col-sm-4 offset-sm-8 form-control form-control-lg  boder border-secondary" type="search" placeholder="Search" aria-label="Search">
   </div>
   <table id="table" class="border border-secondary table table-responsive-sm table-borderless">
     <tbody>
       <tr style="border-bottom: 1px solid grey" *ngFor="let student of lstStudent">
-         <td>
-                <label class="container">
-                  <input type="checkbox" (change)="check(student,$event)" >
-                  <span class="checkmark"></span>
-                </label>
-         </td>
-         <td>{{ student.userName }}</td>
-         <td>{{ student.firstName }}</td>
-         <td>{{ student.emailVerified }}</td>
-         <td>{{ student.id }}</td>
+        <td>
+          <label class="container">
+            <input type="checkbox" (change)="FieldsChange(student,$event)">
+            <span class="checkmark"></span>
+          </label>
+        </td>
+        <td>{{ student.userName }}</td>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.emailVerified }}</td>
+        <td>{{ student.id }}</td>
       </tr>
     </tbody>
   </table>
 </div>
 <div>
-<app-test-editor></app-test-editor>
+  <app-test-editor></app-test-editor>
 </div>

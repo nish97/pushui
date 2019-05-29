@@ -1,11 +1,12 @@
-#search-id{
-    float: right;
+#search-id {
+  float: right;
   /* margin-left: 1060px; */
   margin-top: 372px;
   margin-bottom: 30px;
 }
-input{
-    border: 1.3px solid cyan;
-    border-radius:15px;
-    background: lightcyan;
+
+input {
+  border: 1.3px solid cyan;
+  border-radius: 15px;
+  background: lightcyan;
 }

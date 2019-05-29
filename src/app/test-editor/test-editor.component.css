@@ -1,15 +1,18 @@
-.container-fluid{
+.container-fluid {
   margin-bottom: 15px;
 }
-#editor{
+
+#editor {
   height: 10rem;
   border-color: grey;
 }
-#button1{
+
+#button1 {
   margin-top: 1rem;
-  background-color:  #451771;
+  background-color: #451771;
   color: white;
 }
-#button2{
+
+#button2 {
   margin-top: 2rem;
 }

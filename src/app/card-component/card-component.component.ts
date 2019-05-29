@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card-component.component.css']
 })
 export class CardComponentComponent implements OnInit {
-    @Input() bid:string;
+  @Input() bid: string;
 
   constructor() {
-   }
+  }
 
   ngOnInit() {
 
