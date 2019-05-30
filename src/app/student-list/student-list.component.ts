@@ -88,7 +88,11 @@ export class StudentListComponent implements OnInit {
     }
   }
 
+  push(data:any){
+    this.lstStudent=data.result.reponse.content;
+  }
+
   ngOnInit() {
-    this._studentService.getList(this.students, this._url).subscribe(data => { this.lstStudent = data; });
+    this._studentService.getList(this.students, this._url).subscribe(data => { this.push(data); });
   }
 }

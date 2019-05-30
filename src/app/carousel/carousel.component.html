@@ -13,16 +13,8 @@
   </ng-template>
 
   <ng-template let-item let-i="index.id" #itemTemplate>
-    <div id="cards-carousel" *ngFor="let i of bid">
-      <app-card-component></app-card-component>
+    <div id="cards-carousel" *ngFor="let batch of IBatch">
+      <app-card-component [batch]='batch'></app-card-component>
     </div>
   </ng-template>
 </div>
-
-<!-- <div class="card" id="card" *ngFor="let i of bid">
-    <label class="container">
-      <input type="checkbox" />
-      <span class="checkmark"></span>
-    </label>
-    <app-card-component [bid]="i"></app-card-component>
-</div> -->
