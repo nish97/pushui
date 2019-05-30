@@ -8,8 +8,8 @@ import { StudentService } from '../student.service';
 })
 export class CarouselComponent implements OnInit {
   // public bid = ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"]
-  lstBatch: IBatch[];
-
+  private lstBatch: IBatch[] = [];
+  private participants = {} ;
   constructor(private _studentService: StudentService) {
   }
 
@@ -26,9 +26,21 @@ export class CarouselComponent implements OnInit {
   public _url: string = 'course/v1/batch/list';
 
   push(data:any){
-    console.log("BatchList:",data);
     this.lstBatch = data.result.response.content;
+    console.log("list:",this.lstBatch);
   }
+
+  selectedBatches(batch: IBatch, values: any) {
+    if (values.currentTarget.checked && batch.participant!=null){
+      console.log(Object.keys(batch.participant));
+      this.participants[batch.id]=Object.keys(batch.participant);
+    }
+    else if(!values.currentTarget.checked && batch.participant!=null){
+      delete this.participants[batch.id];
+      console.log(this.participants);
+    }
+  }
+
 
   ngOnInit() {
     this._studentService.getList(this.request, this._url).subscribe(data => { this.push(data);});

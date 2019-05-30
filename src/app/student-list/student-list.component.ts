@@ -18,8 +18,8 @@ export class StudentListComponent implements OnInit {
     }
   };
   _url: string = 'user/v1/search';
-  private lstStudent: IStudent[];
-  private sltStudent: IStudent[];
+  private lstStudent: IStudent[] = [];
+  private sltStudent: IStudent[] = [];
   // public Student = [
   //   {
   //     "userName": "jaswanth",
@@ -79,21 +79,22 @@ export class StudentListComponent implements OnInit {
   constructor(private _studentService: StudentService) { }
 
   FieldsChange(student: IStudent, values: any) {
-    if (values.currentTarget.checked)
+    if (values.currentTarget.checked){
       this.sltStudent.push(student);
-    else if (!values.currentTarget.checked) {
-      this.sltStudent.filter(function(ele) {
-        return ele.id != student.id;
-      });
+      console.log(this.sltStudent);
+    }
+    else if(!values.currentTarget.checked){
+      this.sltStudent =this.sltStudent.filter( ele => ele.id!= student.id );
+      console.log(this.sltStudent);
     }
   }
 
-  push(data:any){
+  pushList(data:any){
     console.log("StudentList:",data.result.response.content);
     this.lstStudent=data.result.response.content;
   }
 
   ngOnInit() {
-    this._studentService.getList(this.students, this._url).subscribe(data => { this.push(data); });
+    this._studentService.getList(this.students, this._url).subscribe(data => { this.pushList(data); });
   }
 }
