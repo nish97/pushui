@@ -89,7 +89,8 @@ export class StudentListComponent implements OnInit {
   }
 
   push(data:any){
-    this.lstStudent=data.result.reponse.content;
+    console.log("StudentList:",data.result.response.content);
+    this.lstStudent=data.result.response.content;
   }
 
   ngOnInit() {

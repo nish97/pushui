@@ -24,7 +24,13 @@ export class CarouselComponent implements OnInit {
     }
   };
   public _url: string = 'course/v1/batch/list';
+
+  push(data:any){
+    console.log("BatchList:",data);
+    this.lstBatch = data.result.response.content;
+  }
+
   ngOnInit() {
-    this._studentService.getList(this.request, this._url).subscribe(data => { this.lstBatch = data; });
+    this._studentService.getList(this.request, this._url).subscribe(data => { this.push(data);});
   }
 }
