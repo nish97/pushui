@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { StudentService } from '../student.service';
 import { IStudent } from '../student';
+import { MessageService } from '../message.service';
+import { Subscription } from 'rxjs'
+
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit, OnDestroy {
   public students: any = {
     "request": {
       "filters": {
@@ -20,6 +23,8 @@ export class StudentListComponent implements OnInit {
   _url: string = 'user/v1/search';
   private lstStudent: IStudent[] = [];
   private sltStudent: IStudent[] = [];
+  private subscription: Subscription;
+  private messages = [];
   // public Student = [
   //   {
   //     "userName": "jaswanth",
@@ -76,25 +81,57 @@ export class StudentListComponent implements OnInit {
   //     "id": "B3"
   //   },
   // ];
-  constructor(private _studentService: StudentService) { }
-
-  FieldsChange(student: IStudent, values: any) {
-    if (values.currentTarget.checked){
-      this.sltStudent.push(student);
-      console.log(this.sltStudent);
-    }
-    else if(!values.currentTarget.checked){
-      this.sltStudent =this.sltStudent.filter( ele => ele.id!= student.id );
-      console.log(this.sltStudent);
-    }
-  }
-
-  pushList(data:any){
-    console.log("StudentList:",data.result.response.content);
-    this.lstStudent=data.result.response.content;
-  }
+  constructor(private _studentService: StudentService, private messageService: MessageService) { }
 
   ngOnInit() {
     this._studentService.getList(this.students, this._url).subscribe(data => { this.pushList(data); });
+    this.subscription = this.messageService.getMessage().subscribe((payload) => {
+      this.messages.concat(Object.values(payload.payload));
+      console.log("values",Object.values(payload.payload));
+      this.subscribe();
+    });
   }
+
+  subscribe(){
+    // this.subscription = this.messageService.getMessage().subscribe((payload) => {
+    //   this.messages.concat(Object.values(payload));
+    // });
+
+    this.students = {
+      "request": {
+        "filters": {
+          "userId": [
+            this.messages
+          ]
+        }
+      }
+    };
+    console.log("studentsfromBatch", this.students);
+    this.HttpRequest();
+  }
+
+  FieldsChange(student: IStudent, values: any) {
+    if (values.currentTarget.checked) {
+      this.sltStudent.push(student);
+      console.log(this.sltStudent);
+    }
+    else if (!values.currentTarget.checked) {
+      this.sltStudent = this.sltStudent.filter(ele => ele.id != student.id);
+      console.log(this.sltStudent);
+    }
+  }
+
+  HttpRequest() {
+    this._studentService.getList(this.students, this._url).subscribe(data => { this.pushList(data); });
+  }
+
+  pushList(data: any) {
+    console.log("StudentList:", data.result.response.content);
+    this.lstStudent = data.result.response.content;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }

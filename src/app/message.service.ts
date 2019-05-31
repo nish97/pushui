@@ -1,20 +1,20 @@
-
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class MessageService {
-  private subject = new Subject<any>();
+  private handler = new Subject<any>();
 
-  sendMessage(message: string) {
-    this.subject.next({ text: message });
-  }
-
-  clearMessages() {
-    this.subject.next();
+  broadcast( payload: any) {
+    this.handler.next({ payload });
   }
 
   getMessage(): Observable<any> {
-    return this.subject.asObservable();
-  }
+    return this.handler.asObservable();
+}
+  // .filter(message => message.type === type)
+  //   .map(message => message.payload)
+  //   .subscribe(callback);
 }

@@ -28,7 +28,7 @@ import 'hammerjs';
     AppRoutingModule,
     FormsModule,
     Ng2CarouselamosModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
